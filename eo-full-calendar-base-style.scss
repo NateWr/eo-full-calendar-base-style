@@ -1,0 +1,413 @@
+//
+// Base layout styles for the Full Calendar in Event Organiser
+//
+
+// Height of rows in full calendar
+$fc-row-height: 10em !default;
+
+// Border color
+$fc-border-color: #ddd !default;
+
+// Background behind day of the week/month headers
+$fc-calendar-header-bg: #eee !default;
+$fc-agenda-header-bg: $fc-calendar-header-bg !default;
+$fc-basic-header-bg: $fc-calendar-header-bg !default;
+
+// Event detail popover
+$fc-qtip-bg: #fff !default;
+$fc-qtip-text: #000 !default;
+
+// Full calendar header
+.fc-toolbar {
+	text-align: center;
+
+	// clear floats
+	&::before,
+	&::after {
+		content: " ";
+		display: table;
+	}
+
+	&::after {
+		clear: both;
+	}
+
+	.fc-left {
+		float: left;
+		margin-bottom: 1em;
+	}
+
+	.fc-right {
+		float: right;
+		margin-bottom: 1em;
+	}
+
+	.fc-center {
+		display: inline-block;
+		margin-bottom: 1em;
+
+		> div > * {
+			display: block;
+			float: left;
+			margin-left: 0.25em;
+			margin-right: 0.25em;
+		}
+	}
+
+	.fc-button-group,
+	button,
+	.fc-header-dropdown {
+		display: inline-block;
+		margin-right: 0.5em;
+		vertical-align: top;
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+	h2 {
+		font-size: 1.5em;
+		line-height: 2em; // should match height of buttons in row
+		margin: 0;
+		padding-right: 1em;
+	}
+
+	h2,
+	select {
+		display: inline-block;
+	}
+
+	.fc-icon-left-single-arrow::before {
+		content: "\02039";
+		font-size: 1em;
+		line-height: 1;
+	}
+
+	.fc-icon-right-single-arrow::before {
+		content: "\0203A";
+		font-size: 1em;
+		line-height: 1;
+	}
+}
+
+// Shared styles for calendar views (full and collapsed)
+.fc-view {
+	position: relative;
+
+	table {
+		border: 0;
+		margin: 0;
+		table-layout: fixed;
+		width: 100%;
+	}
+
+	tr {
+		border: 0;
+	}
+
+	th,
+	td {
+		padding: 0;
+	}
+
+	.fc-day-header {
+		background: transparent;
+		padding: 1em 0.5em;
+		text-align: center;
+	}
+
+	.fc-row {
+		position: relative;
+	}
+
+	.fc-bg {
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+
+		> table {
+			height: 100%;
+		}
+	}
+
+	.fc-event {
+		display: block;
+		margin: 0.5em 0;
+		padding: 0 1em;
+		text-decoration: none;
+
+		.fc-title {
+			display: block;
+		}
+	}
+}
+
+.fc-listMonth-view {
+
+	.fc-list-header-left {
+		padding-right: 0.5em;
+	}
+
+	.fc-content-skeleton {
+
+		thead td {
+			border-bottom: 1px solid $fc-border-color;
+			padding: 2em 0 1em;
+		}
+	}
+}
+
+// Weekly and daily agenda view
+.fc-agenda-view {
+
+	> table {
+		border: 1px solid $fc-border-color;
+	}
+
+	hr.fc-widget-header {
+		display: none;
+	}
+
+	.fc-time-grid-container {
+		position: relative;
+	}
+
+	th {
+		background: transparent;
+	}
+
+	.fc-bg {
+
+		td {
+			border-left: 1px solid $fc-border-color;
+
+			&:first-child {
+				border-left: 0;
+			}
+		}
+	}
+
+	.fc-day-grid {
+		border-bottom: 1px solid $fc-border-color;
+		border-top: 1px solid $fc-border-color;
+		min-height: 2em;
+
+		td {
+			height: 2em;
+		}
+	}
+
+	.fc-widget-content .fc-axis span {
+		display: inline-block;
+		padding-left: 0.5em;
+		padding-right: 0.5em;
+	}
+
+	.fc-slats {
+
+		td {
+			height: 2em;
+		}
+
+		tr {
+			border-bottom: 1px solid $fc-border-color;
+		}
+
+		.fc-minor {
+			border-bottom: 1px solid $fc-border-color;
+
+			&:last-child {
+				border-bottom: 0;
+			}
+		}
+	}
+
+	.fc-day-header {
+		background: $fc-agenda-header-bg;
+	}
+
+	.fc-event-container {
+		position: relative;
+	}
+
+	.fc-time-grid {
+
+		.fc-content-skeleton {
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+
+		.fc-event {
+			left: 0;
+			margin: 0;
+			overflow: hidden;
+			position: absolute;
+			right: auto;
+			width: 100%;
+		}
+	}
+}
+
+.fc-agendaDay-view {
+
+	.fc-time-grid {
+
+		.fc-event {
+			margin-right: 0;
+			right: 0;
+			width: auto;
+		}
+	}
+}
+
+// Covers basic day, week and calendar
+.fc-basic-view {
+
+	.fc-bg td,
+	.fc-content-skeleton {
+		min-height: 4em;
+	}
+
+	.fc-bg td {
+		border-right: 1px solid $fc-border-color;
+
+		&:last-child {
+			border-right: 0;
+		}
+	}
+
+	.fc-content-skeleton {
+		position: relative;
+	}
+}
+
+.fc-basicWeek-view,
+.fc-basicDay-view {
+
+	> table {
+		border: 1px solid $fc-border-color;
+
+		> tbody {
+			border-top: 1px solid $fc-border-color;
+		}
+	}
+
+	.fc-day-header {
+		background: $fc-basic-header-bg;
+	}
+}
+
+.fc-month-view {
+
+	> table {
+		border: 1px solid $fc-border-color;
+
+		> thead {
+
+			.fc-row {
+				margin: 0;
+				min-height: 0;
+				position: absolute;
+				top: 0;
+				z-index: 1;
+			}
+
+		}
+
+		> tbody {
+
+			> tr > td td {
+				border-bottom: 1px solid $fc-border-color;
+				border-top: 1px solid $fc-border-color;
+
+				&:last-child {
+					border-right: 0;
+				}
+			}
+		}
+	}
+
+	.fc-row:first-child .fc-bg .fc-day {
+		border-top: 0;
+	}
+
+	.fc-day-header {
+		padding: 0 0.25em;
+		text-align: left;
+	}
+
+	.fc-row {
+		min-height: $fc-row-height;
+	}
+
+	.fc-bg {
+
+		.fc-other-month,
+		.fc-past {
+			background: transparent;
+		}
+	}
+
+	.fc-content-skeleton {
+		position: relative;
+
+		td {
+			border: 0;
+			padding: 0 0.25em;
+		}
+
+		tbody {
+
+			td {
+				padding: 0;
+			}
+		}
+	}
+
+	.fc-day-number {
+		background: $fc-calendar-header-bg;
+		text-align: right;
+	}
+
+	.fc-event {
+
+		&.eo-multi-day {
+			padding: 0;
+
+			.fc-content {
+				padding: 0.5em;
+			}
+		}
+	}
+}
+
+//
+// Styles for qtip popups lib used by Event Organiser
+//
+.qtip {
+	background: $fc-qtip-bg;
+	color: $fc-qtip-text;
+	display: none;
+	left: -28000px;
+	max-width: 20em;
+	min-width: 10em;
+	position: absolute;
+	top: -28000px;
+}
+
+.qtip-content {
+	overflow: hidden;
+	padding: 1em;
+	position: relative;
+	word-wrap: break-word;
+}
+
+.qtip-titlebar {
+	padding: 1em;
+	position: relative;
+}
