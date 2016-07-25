@@ -1,6 +1,6 @@
 # Base layout styles for Event Organiser's full calendar views
 
-This LESS stylesheet provides basic layout styles to handle the display modes
+These LESS and .scss stylesheets provides basic layout styles to handle the display modes
 provided by [Event Organiser's](https://wordpress.org/plugins/event-organiser/)
 full calendar. These include a monthly calendar, daily and weeky agenda views,
 and basic daily and weekly views of events.
